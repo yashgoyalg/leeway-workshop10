@@ -15,14 +15,14 @@ app.post("/login", (req,resp)=>{
         username: "yash",
         passward: 'XYG123'
     }
-    jwt.sign({user},secretkey, {expiresIn: '300s'},(err,token)=>{
+    jwt.sign({user},secretkey, {expiresIn: '3000s'},(err,token)=>{
         resp.json({
             token
         })
     })
 })
 
-app.post('profile',verifyToken,(req,resp)=>{
+app.post('/profile',verifyToken,(req,resp)=>{
     jwt.verify(req.token,secretkey,(err,authData)=> {
         if(err){
             resp.send({result: "invaild token"})
